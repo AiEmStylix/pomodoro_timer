@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import "primeicons/primeicons.css";
+
+:root {
+    --primary-color: #4C585B;
+    --secondary-color: #7E99A3;
+    --button-color: #A5BFCC;
+    --timer-color: #F4EDD3;
+    --timer-size: clamp(4rem, 10vw, 8rem);
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    font-family: sans-serif;
+    flex: auto;
+}
+
+.container {
+    padding: clamp(5rem, 3vw, 2rem);
+    background-color: var(--secondary-color);
+    border-radius: 1rem;
+    border: none;
+}
+
+#timer {
+    font-size: var(--timer-size);
+    color: var(--timer-color);
+    text-align: center;
+    font-family: "Space Grotesk", sans-serif;
+    margin: 0.5rem 0;
+}
+
+.state-btns {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+.state-btns > button {
+    border: none;
+    color: var(--primary-color);
+    background-color: var(--button-color);
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: clamp(16px, 4vw, 22px);
+    padding: clamp(1rem, 2vw, 2rem);
+    margin: 1rem;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s, box-shadow 0.1s;
+
+}
+
+.state-btns > button:active {
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
+
+.reset {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+

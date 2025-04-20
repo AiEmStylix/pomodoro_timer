@@ -1,16 +1,13 @@
 let timerDisplay = document.getElementById("timer") as HTMLElement;
-let startButton = document.getElementById("start") as HTMLButtonElement;
-let pauseButton = document.getElementById("pause") as HTMLButtonElement;
-let resetButton = document.getElementById("reset") as HTMLButtonElement;
+let toggleButton = document.querySelector(".toggle") as HTMLButtonElement;
+let resetButton = document.querySelector(".reset") as HTMLButtonElement;
 
 let duration = 25 * 60;
-
 let timeLeft = duration;
-
 let interval: number | null = null;
 
 const updateDisplay = () => {
-  const minutes = Math.floor(timeLeft/ 60);
+  const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 
   timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
@@ -18,9 +15,6 @@ const updateDisplay = () => {
 
 const startTimer = () => {
   if (interval !== null) return;
-  //Change text content of button
-  startButton.textContent = "Start";
-  pauseButton.disabled = false;
   interval = window.setInterval(() => {
     if (timeLeft <= 0) {
       timeLeft = 0;
@@ -29,9 +23,9 @@ const startTimer = () => {
       interval = null;
       alert("Time's up");
     }
-      timeLeft--;
-      updateDisplay();
-  }, 1000)
+    timeLeft--;
+    updateDisplay();
+  }, 1000);
 };
 
 const pauseTimer = () => {
@@ -39,11 +33,6 @@ const pauseTimer = () => {
     clearInterval(interval!);
     interval = null;
   }
-
-  //Change text context for start button
-  startButton.textContent = "Continue";
-  //Disable pause button
-  pauseButton.disabled = true;
 }
 
 const resetTimer = () => {
@@ -52,15 +41,17 @@ const resetTimer = () => {
     interval = null;
   }
   timeLeft = duration;
-
-  //Reset text content of button
-  startButton.textContent = "Start";
-
   updateDisplay();
 }
 
-startButton.addEventListener("click", startTimer);
-pauseButton.addEventListener("click", pauseTimer);
-resetButton.addEventListener("click", resetTimer);
+toggleButton.addEventListener('click', () => {
+  toggleButton.classList.add("start");
+});
+
+resetButton.addEventListener('click', () => {
+  resetTimer();
+  resetButton.classList.remove('visible');
+  toggleButton.textContent = "Start";
+});
 
 updateDisplay();
