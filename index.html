@@ -1,25 +1,28 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/src/reset.css" />
-    <link rel="stylesheet" href="/src/styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pomodoro Timer🍅</title>
-    <script type="module" src="/src/main.ts" defer></script>
-  </head>
 
-  <body>
-    <main class="container">
-        <div id="timer">25:00</div>
-        <div class="state-btns">
-          <button class="toggle">
-            <i class="pi pi-caret-right"></i>
-          </button>
-          <button class="reset">
-            <i class="pi pi-pause"></i>
-          </button>
-        </div>
-    </main>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/src/assets/reset.css" />
+  <link rel="stylesheet" href="/src/assets/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pomodoro Timer🍅</title>
+  <script type="module" src="/src/main.ts" defer></script>
+</head>
+
+<body>
+  <main class="container">
+    <div id="timer">25:00</div>
+    <div class="state-btns">
+      <button class="toggle">
+        <i data-lucide="play" style="fill: currentColor;"></i>
+      </button>
+      <button class="reset">
+        <i data-lucide="square" style="fill: currentColor;"></i>
+      </button>
+    </div>
+  </main>
+</body>
+
+
 </html>

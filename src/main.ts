@@ -1,6 +1,18 @@
+import { createIcons, Pause, Play, Square } from "lucide";
+
+const renderIcons = () => {createIcons({
+  icons: {
+    Play,
+    Pause,
+    Square,
+  }
+})};
+
 let timerDisplay = document.getElementById("timer") as HTMLElement;
 let toggleButton = document.querySelector(".toggle") as HTMLButtonElement;
 let resetButton = document.querySelector(".reset") as HTMLButtonElement;
+
+let toggleButtonIcon = toggleButton.firstElementChild;
 
 let duration = 25 * 60;
 let timeLeft = duration;
@@ -45,13 +57,30 @@ const resetTimer = () => {
 }
 
 toggleButton.addEventListener('click', () => {
-  toggleButton.classList.add("start");
+  if (interval === null) {
+    startTimer();
+    toggleButton.innerHTML =  '<i data-lucide="pause" style="fill: currentColor;"></i>';
+    renderIcons();
+
+    //Display the reset button after click
+    resetButton.classList.add('show');
+  } else {
+    pauseTimer();
+    toggleButton.innerHTML =  '<i data-lucide="play" style="fill: currentColor;"></i>';
+    renderIcons();
+  }
 });
 
 resetButton.addEventListener('click', () => {
-  resetTimer();
-  resetButton.classList.remove('visible');
-  toggleButton.textContent = "Start";
-});
+  if (interval !== null) {
+    resetTimer();
+    toggleButton.innerHTML =  '<i data-lucide="play" style="fill: currentColor;"></i>';
+    renderIcons();
+
+    //Hide the button
+    resetButton.classList.remove('show');
+  }
+})
 
 updateDisplay();
+renderIcons();
